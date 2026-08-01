@@ -1,0 +1,23 @@
+# Python environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# AI Agent memory data
+memory.json
+*.db
+
+# Build files
+build/
+
+dist/
+
+# IDE
+.vscode/
+.idea/
+
