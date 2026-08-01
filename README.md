@@ -31,57 +31,64 @@
 - **工具实现**：纯 Python 函数调用  
 - **界面**：Web UI（基于 Streamlit 或 Flask，根据你的实现调整）  
 
+
 ---
+
+
+安装与配置
+
+
+1. 克隆仓库  
+bash  
+git clone https://github.com/mir-738/AI-Agent-chatbot.git  
+cd AI-Agent-chatbot  
+2. 创建虚拟环境（推荐）  
+bash  
+python -m venv .venv  
+source .venv/bin/activate   # Linux/Mac  
+.venv\Scripts\activate      # Windows  
+3. 安装依赖  
+bash  
+pip install -r requirements.txt  
+4. 配置环境变量  
+在项目根目录创建 .env 文件（已加入 .gitignore），填入以下内容：  
 ```
-##安装与配置
-
-### 1. 克隆仓库
-bash
-git clone https://github.com/mir-738/AI-Agent-chatbot.git
-cd AI-Agent-chatbot
-2. 创建虚拟环境（推荐）
-bash
-python -m venv .venv
-source .venv/bin/activate   # Linux/Mac
-.venv\Scripts\activate      # Windows
-3. 安装依赖
-bash
-pip install -r requirements.txt
-4. 配置环境变量
-在项目根目录创建 .env 文件（已加入 .gitignore），填入以下内容：
-
 env
 DEEPSEEK_API_KEY=你的DeepSeek API密钥
 SENIVERSE_API_KEY=你的心知天气API密钥
+```
 获取密钥：
 
-DeepSeek: platform.deepseek.com
 
-心知天气: seniverse.com
+DeepSeek: platform.deepseek.com  
+心知天气: seniverse.com  
 
-启动
-运行 Web UI
-bash
-python web_ui.py
+
+启动  
+运行 Web UI  
+bash  
+python web_ui.py  
 （如果使用 Streamlit，则执行 streamlit run web_ui.py）
 
-命令行交互（若有）
-bash
-python main.py
-记忆机制
-短期记忆：保存最近 N 轮对话（由 MAX_HISTORY 控制），保持上下文连贯。
 
-长期记忆：当检测到用户反复提及的偏好（如“我喜欢吃辣”、“我讨厌下雨”）时，自动提取并存入 memory.json，日后对话会主动调用。
+命令行交互（若有）  
+bash  
+python main.py  
+记忆机制  
+短期记忆：保存最近 N 轮对话（由 MAX_HISTORY 控制），保持上下文连贯。  
 
-记忆文件默认保留 7 天（由 MEMORY_DAY 控制），过时记忆自动清理。
+长期记忆：当检测到用户反复提及的偏好（如“我喜欢吃辣”、“我讨厌下雨”）时，自动提取并存入 memory.json，日后对话会主动调用。  
 
-工具函数说明
-工具名称	触发方式	依赖
-天气查询	用户提问“今天天气怎么样？”或“北京天气”	心知天气 API（需 Seniverse 密钥）
-计算器	输入数学表达式如 (3+5)*2	无（使用 Python eval 安全沙箱）
-时间查询	“现在几点了？”、“今天星期几？”	无
-工具调用由 DeepSeek 根据上下文自动决策，无需手动指定。
-```
+记忆文件默认保留 7 天（由 MEMORY_DAY 控制），过时记忆自动清理。  
+
+工具函数说明  
+工具名称	触发方式	依赖  
+天气查询	用户提问“今天天气怎么样？”或“北京天气”	心知天气 API（需 Seniverse 密钥）  
+计算器	输入数学表达式如 (3+5)*2	无（使用 Python eval 安全沙箱）  
+时间查询	“现在几点了？”、“今天星期几？”	无  
+工具调用由 DeepSeek 根据上下文自动决策，无需手动指定。  
+
+
 
 项目结构
 ```
@@ -112,16 +119,18 @@ print(get_weather("北京"))
 print(calculate("10+20*3"))
 print(get_current_time())
 ```
-```
-贡献
-欢迎提交 Issue 或 Pull Request。若你想添加新工具或优化记忆策略，请参考现有代码风格。
 
-许可
-本项目仅供学习与娱乐用途，请勿用于商业或非法场景。使用 DeepSeek 与心知天气 API 时请遵守其服务条款。
 
-致谢
-DeepSeek 提供强大且性价比极高的语言模型
 
-心知天气提供稳定易用的天气 API
-```
+贡献  
+欢迎提交 Issue 或 Pull Request。若你想添加新工具或优化记忆策略，请参考现有代码风格。  
+
+许可  
+本项目仅供学习与娱乐用途，请勿用于商业或非法场景。使用 DeepSeek 与心知天气 API 时请遵守其服务条款。  
+
+致谢  
+DeepSeek 提供强大且性价比极高的语言模型  
+  
+心知天气提供稳定易用的天气 API  
+
 角色设定灵感来自“谷风天音”（柚子社傲娇妹妹形象）
