@@ -1,8 +1,3 @@
-"""
-主程序入口
-启动聊天机器人，基于 LangGraph 架构实现对话循环。
-"""
-
 from bot import Robot
 from config import BOT_TONE, BOT_NAME
 from langgraph.graph import StateGraph, END
